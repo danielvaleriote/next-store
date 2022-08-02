@@ -5,11 +5,14 @@ import {
 	Header,
 	MobileNavbar,
 	RegularNavbar,
-	NavItem,
+	StyledItem,
 	NavList,
+	ToggleMobileNav,
+	StyledLink,
 } from './styled';
 import Link from 'next/link';
 import { FaShoppingCart } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 type NavLinkProps = {
 	href: string;
@@ -17,25 +20,34 @@ type NavLinkProps = {
 	cart?: boolean;
 };
 
-const NavLink = ({ href, children, cart }: NavLinkProps) => {
+const NavLink = ({ href, children }: NavLinkProps) => {
 	const router = useRouter();
 
 	return (
-		<NavItem
+		<Link href={href} passHref={true}>
+			<StyledLink className={router.pathname == href ? 'active' : ''}>
+				{children}
+			</StyledLink>
+		</Link>
+	);
+};
+const NavItem = ({ href, children, cart }: NavLinkProps) => {
+	return (
+		<StyledItem
 			style={
 				cart
 					? { position: 'absolute', right: '20px', paddingTop: '2px' }
 					: undefined
 			}
 		>
-			<Link href={href} passHref={true}>
-				<a className={router.pathname == href ? 'active' : ''}>{children}</a>
-			</Link>
-		</NavItem>
+			<NavLink href={href}>{children}</NavLink>
+		</StyledItem>
 	);
 };
 
 const Navbar = () => {
+	const router = useRouter();
+
 	const [isMobile, setIsMobile] = useState(false);
 	const checkForMobile = () => setIsMobile(window.innerWidth <= 750);
 
@@ -47,18 +59,26 @@ const Navbar = () => {
 	return (
 		<Header>
 			{isMobile ? (
-				<MobileNavbar></MobileNavbar>
+				<MobileNavbar>
+					<ToggleMobileNav>
+						<GiHamburgerMenu size={20} color={'#fff'} />
+					</ToggleMobileNav>
+					<NavLink href="/">Início</NavLink>
+					<NavLink href="/user/cart">
+						<FaShoppingCart size={20} color="#fff" />
+					</NavLink>
+				</MobileNavbar>
 			) : (
 				<RegularNavbar>
 					<NavList>
-						<NavLink href="/">Início</NavLink>
-						<NavLink href="/products/electronics">Eletrônicos</NavLink>
-						<NavLink href="/products/jewelery">Joalheria</NavLink>
-						<NavLink href="/mensclothing">Moda masculinas</NavLink>
-						<NavLink href="/womensclothing">Moda femininas</NavLink>
-						<NavLink href="/user/cart" cart={true}>
+						<NavItem href="/">Início</NavItem>
+						<NavItem href="/products/electronics">Eletrônicos</NavItem>
+						<NavItem href="/products/jewelery">Joalheria</NavItem>
+						<NavItem href="/mensclothing">Moda masculinas</NavItem>
+						<NavItem href="/womensclothing">Moda femininas</NavItem>
+						<NavItem href="/user/cart" cart={true}>
 							<FaShoppingCart />
-						</NavLink>
+						</NavItem>
 					</NavList>
 				</RegularNavbar>
 			)}
