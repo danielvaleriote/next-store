@@ -17,11 +17,7 @@ const Home: NextPage<Props> = ({ products }) => {
 export const getStaticProps: GetStaticProps = async () => {
 	const products: Product[] = await fetchProducts('/');
 
-	return {
-		props: {
-			products: products,
-		},
-	};
+	return { props: { products: products } };
 };
 
 export default Home;

@@ -1,6 +1,12 @@
 {
-  "/products/category/electronics": "/electronics",
-  "/products/category/jewelery": "/jewelery",
-  "/products/category/men's%20clothing": "/men's%20clothing",
-  "/products/category/women's%20clothing": "/women's%20clothing"
+	"/products/category/electronics": "/electronics",
+	"/products/category/jewelery": "/jewelery",
+
+	"/products/category/men's clothing": "/mensclothing",
+	"/products/category/men's%20clothing": "/mensclothing",
+	"/products/category/men%27s%20clothing": "/mensclothing",
+
+	"/products/category/women's clothing": "/womensclothing",
+	"/products/category/women's%20clothing": "/womensclothing",
+	"/products/category/women%27s%20clothing": "/womensclothing"
 }

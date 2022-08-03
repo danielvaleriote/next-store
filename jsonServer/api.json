@@ -366,7 +366,7 @@
 			}
 		}
 	],
-	"men's%20clothing": [
+	"mensclothing": [
 		{
 			"id": 1,
 			"title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -416,7 +416,7 @@
 			}
 		}
 	],
-	"women's%20clothing": [
+	"womensclothing": [
 		{
 			"id": 15,
 			"title": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
