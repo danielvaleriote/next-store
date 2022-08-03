@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"jsonserver": "json-server --watch ./src/jsonServer/api.json --port 3001 --routes ./src/jsonServer/routes.json",
+		"jsonserver": "json-server --watch ./jsonServer/api.json --port 3001 --routes ./jsonServer/routes.json",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
