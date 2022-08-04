@@ -1,0 +1,50 @@
+import React from 'react';
+import {
+	AddToCartButton,
+	ImageContainer,
+	ProductImage,
+	InfoContainer,
+	Price,
+	Rating,
+	Title,
+	StyledProductItem,
+} from './styled';
+import { Product } from '../../../types';
+import Link from 'next/link';
+import { FaShoppingCart } from 'react-icons/fa';
+
+type Props = {
+	product: Product;
+};
+
+const ProductItem = ({ product }: Props) => {
+	const { title, rating, price, image } = product;
+
+	return (
+		<StyledProductItem>
+			<ImageContainer>
+				<ProductImage
+					src={image}
+					alt={product.title}
+					width={340}
+					height={229}
+				/>
+			</ImageContainer>
+			<InfoContainer>
+				<Title>
+					<Link href={'/products/' + product.id}>{title}</Link>
+				</Title>
+				<Price>R${price}</Price>
+				<Rating>
+					<abbr title={rating.count + 'votos'}></abbr>
+				</Rating>
+			</InfoContainer>
+			<AddToCartButton>
+				Adicionar ao carrinho{' '}
+				<FaShoppingCart size={14} style={{ marginLeft: '10px' }} />
+			</AddToCartButton>
+		</StyledProductItem>
+	);
+};
+
+export default ProductItem;
