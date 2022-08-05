@@ -1,9 +1,8 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { fetchProducts } from '../../utils/products';
 import { Product } from '../../../types';
-
-import React from 'react';
 import ProductsPage from '../../components/ProductsPage';
+import React from 'react';
 
 interface Props {
 	products: Product[];
