@@ -44,6 +44,11 @@ export const Price = styled.h4`
 export const Rating = styled.h4`
 	grid-area: rating;
 	text-align: center;
+	font-weight: normal;
+
+	& .star-ratings {
+		margin-right: 10px;
+	}
 
 	& abbr {
 		text-decoration: none;

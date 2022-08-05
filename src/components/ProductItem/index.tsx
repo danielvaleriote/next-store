@@ -12,6 +12,7 @@ import {
 import { Product } from '../../../types';
 import Link from 'next/link';
 import { FaShoppingCart } from 'react-icons/fa';
+import StarRatings from 'react-star-ratings';
 
 type Props = {
 	product: Product;
@@ -34,13 +35,26 @@ const ProductItem = ({ product }: Props) => {
 				<Title>
 					<Link href={'/products/' + product.id}>{title}</Link>
 				</Title>
-				<Price>R${price}</Price>
+				<Price>
+					R$
+					{price.toLocaleString(undefined, {
+						minimumFractionDigits: 2,
+					})}
+				</Price>
 				<Rating>
-					<abbr title={rating.count + 'votos'}></abbr>
+					<StarRatings
+						rating={rating.rate}
+						starRatedColor="#ffd055"
+						starEmptyColor="gray"
+						name="rating"
+						starDimension="15px"
+						starSpacing="0px"
+					/>
+					({rating.count})
 				</Rating>
 			</InfoContainer>
 			<AddToCartButton>
-				Adicionar ao carrinho{' '}
+				Adicionar ao carrinho
 				<FaShoppingCart size={14} style={{ marginLeft: '10px' }} />
 			</AddToCartButton>
 		</StyledProductItem>

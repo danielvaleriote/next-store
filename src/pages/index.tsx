@@ -1,17 +1,14 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { fetchProducts } from '../utils/products';
 import { Product } from '../../types';
+import ProductsPage from '../components/ProductsPage';
 
 interface Props {
 	products: Product[];
 }
 
 const Home: NextPage<Props> = ({ products }) => {
-	return (
-		<div>
-			<h1>Início</h1>
-		</div>
-	);
+	return <ProductsPage products={products}></ProductsPage>;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
