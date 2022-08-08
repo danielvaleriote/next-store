@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { SearchInput, InputContainer } from './styled';
 
 type Props = {
 	value: string;
@@ -11,11 +12,13 @@ const SearchBar = ({ value, setValue }: Props) => {
 	};
 
 	return (
-		<input
-			placeholder="Digite o que você procura"
-			value={value}
-			onChange={changeHandler}
-		></input>
+		<InputContainer>
+			<SearchInput
+				placeholder="Digite o que você procura"
+				value={value}
+				onChange={changeHandler}
+			/>
+		</InputContainer>
 	);
 };
 

@@ -18,6 +18,7 @@ body {
 	width: 100%;
 	min-height: 100vh;
 	font-family: 'Poppins', Arial, Helvetica, sans-serif;
+	background-color: var(--main-white);
 }
 
 a {
