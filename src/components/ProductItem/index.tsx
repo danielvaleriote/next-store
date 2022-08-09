@@ -12,7 +12,11 @@ import {
 import { Product } from '../../../types';
 import Link from 'next/link';
 import { FaShoppingCart } from 'react-icons/fa';
-import StarRatings from 'react-star-ratings';
+
+import dynamic from 'next/dynamic';
+const StarRatings = dynamic(() => import('react-star-ratings'), {
+	ssr: false,
+});
 
 type Props = {
 	product: Product;
@@ -50,7 +54,7 @@ const ProductItem = ({ product }: Props) => {
 						starDimension="15px"
 						starSpacing="0px"
 					/>
-					({rating.count})
+					{rating.count})
 				</Rating>
 			</InfoContainer>
 			<AddToCartButton>

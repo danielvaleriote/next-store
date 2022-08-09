@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { DropdownContainer, DropdownBtn, List, Item } from './style';
 import { order } from '../../../types';
 
@@ -8,8 +8,6 @@ const SortDropdown = ({
 	handleSort: (order: order) => void;
 }) => {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
-
-	useEffect(() => document.addEventListener('click', (e) => e.target), []);
 
 	return (
 		<DropdownContainer>
