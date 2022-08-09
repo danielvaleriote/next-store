@@ -13,10 +13,7 @@ const ProductsPage = ({ products }: Props) => {
 	const [displayedProducts, setDisplayedProducts] = useState(products);
 
 	useEffect(
-		() =>
-			setDisplayedProducts(() =>
-				filterProductsList(displayedProducts, searchValue)
-			),
+		() => setDisplayedProducts(() => filterProductsList(products, searchValue)),
 		[searchValue]
 	);
 
@@ -43,7 +40,13 @@ const ProductsPage = ({ products }: Props) => {
 		<>
 			<SearchBar value={searchValue} setValue={setSearchValue} />
 			<SortDropdown handleSort={handleSort} />
-			<ProductsList products={displayedProducts} />
+			{displayedProducts.length > 0 ? (
+				<ProductsList products={displayedProducts} />
+			) : (
+				<h2 style={{ textAlign: 'center', fontWeight: 600, marginTop: '50px' }}>
+					Nenhum produto encontrado.
+				</h2>
+			)}
 		</>
 	);
 };

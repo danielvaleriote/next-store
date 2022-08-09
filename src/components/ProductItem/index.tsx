@@ -18,9 +18,7 @@ const StarRatings = dynamic(() => import('react-star-ratings'), {
 	ssr: false,
 });
 
-type Props = {
-	product: Product;
-};
+type Props = { product: Product };
 
 const ProductItem = ({ product }: Props) => {
 	const { title, rating, price, image } = product;
@@ -54,7 +52,7 @@ const ProductItem = ({ product }: Props) => {
 						starDimension="15px"
 						starSpacing="0px"
 					/>
-					{rating.count})
+					({rating.count})
 				</Rating>
 			</InfoContainer>
 			<AddToCartButton>
