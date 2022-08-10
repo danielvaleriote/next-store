@@ -32,7 +32,7 @@ const SortDropdown = ({
 				Ordenar por:
 			</DropdownBtn>
 			{dropdownOpen && (
-				<List>
+				<List onClick={() => setDropdownOpen(false)}>
 					<Item onClick={() => handleSort('lowestPrice')}>Menor preço</Item>
 					<Item onClick={() => handleSort('highestPrice')}>Maior preço</Item>
 					<Item onClick={() => handleSort('rating')}>Melhor avaliação</Item>

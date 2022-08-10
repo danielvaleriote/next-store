@@ -57,7 +57,10 @@ const ProductItem = ({ product }: Props) => {
 			</InfoContainer>
 			<AddToCartButton>
 				Adicionar ao carrinho
-				<FaShoppingCart size={14} style={{ marginLeft: '10px' }} />
+				<FaShoppingCart
+					size={14}
+					style={{ marginLeft: '10px', transform: 'translateY(2px)' }}
+				/>
 			</AddToCartButton>
 		</StyledProductItem>
 	);

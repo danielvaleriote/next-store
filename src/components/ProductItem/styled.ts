@@ -27,7 +27,7 @@ export const ProductImage = styled(Image)`
 
 export const Title = styled.h2`
 	grid-area: title;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: 600;
 	text-align: center;
 	overflow: hidden;

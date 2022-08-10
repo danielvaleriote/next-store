@@ -7,7 +7,9 @@ export const fetchProducts = async (path: string): Promise<any> => {
 		? 'http://localhost:3001/products'
 		: process.env.API_BASE_URL;
 
-	return fetch(apiBaseUrl + path).then((res) => res.json());
+	return fetch(apiBaseUrl + path)
+		.then((res) => res.json())
+		.catch((err) => console.error(err.message));
 };
 
 export const filterProductsList = (products: Product[], query: string) => {
