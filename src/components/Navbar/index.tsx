@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 
 import {
@@ -14,6 +14,8 @@ import {
 import Link from 'next/link';
 import { FaShoppingCart } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
+
+import cartContext from '../../context/';
 
 type NavLinkProps = {
 	href: string;
@@ -69,6 +71,7 @@ const Navbar = () => {
 
 	const checkForMobile = () => setIsMobile(window.innerWidth <= 750);
 	const toggleSideMenu = () => setShowSideMenu(!showSideMenu);
+	const context = useContext(cartContext);
 
 	useEffect(() => {
 		window.addEventListener('resize', checkForMobile);
@@ -147,7 +150,7 @@ const Navbar = () => {
 						<NavItem href="/category/mensclothing">Moda masculinas</NavItem>
 						<NavItem href="/category/womensclothing">Moda femininas</NavItem>
 						<NavItem href="/user/cart" cart={true}>
-							<FaShoppingCart />
+							<FaShoppingCart /> {context.cart && <>({context.cart.length})</>}
 						</NavItem>
 					</ul>
 				</RegularNavbar>
