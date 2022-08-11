@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import {
 	Container,
 	StyledProduct,
@@ -15,13 +15,17 @@ import {
 import Stars from 'react-star-ratings';
 
 import { Product } from '../../../types';
-import Image from 'next/image';
 import { FaShoppingCart } from 'react-icons/fa';
+import Image from 'next/image';
+import cartContext from '../../context';
+import { addToCart } from '../../utils/products';
 
 const DetailedProduct = ({ product }: { product: Product }) => {
 	if (!product) return <div>Error</div>;
 
 	const { title, description, rating, image, price } = product;
+
+	const context = useContext(cartContext);
 
 	return (
 		<Container>
@@ -51,7 +55,7 @@ const DetailedProduct = ({ product }: { product: Product }) => {
 						({rating.count})
 					</Rating>
 				</PriceAndRating>
-				<AddToCartBtn>
+				<AddToCartBtn onClick={() => addToCart(product, context.setCart)}>
 					Adicionar ao carrinho{' '}
 					<FaShoppingCart style={{ transform: 'translateY(2px)' }} />
 				</AddToCartBtn>

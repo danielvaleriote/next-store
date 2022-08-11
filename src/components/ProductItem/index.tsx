@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import {
 	AddToCartButton,
 	ImageContainer,
@@ -12,8 +12,9 @@ import {
 import { Product } from '../../../types';
 import Link from 'next/link';
 import { FaShoppingCart } from 'react-icons/fa';
-
 import dynamic from 'next/dynamic';
+import { addToCart } from '../../utils/products';
+import cartContext from '../../context';
 const StarRatings = dynamic(() => import('react-star-ratings'), {
 	ssr: false,
 });
@@ -22,6 +23,7 @@ type Props = { product: Product };
 
 const ProductItem = ({ product }: Props) => {
 	const { title, rating, price, image } = product;
+	const context = useContext(cartContext);
 
 	return (
 		<StyledProductItem>
@@ -55,7 +57,7 @@ const ProductItem = ({ product }: Props) => {
 					({rating.count})
 				</Rating>
 			</InfoContainer>
-			<AddToCartButton>
+			<AddToCartButton onClick={() => addToCart(product, context.setCart)}>
 				Adicionar ao carrinho
 				<FaShoppingCart
 					size={14}
