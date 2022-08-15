@@ -40,16 +40,16 @@ export const addToCart = (
 	) {
 		setProducts((prevProducts) => {
 			const savedProductIndex = prevProducts.findIndex(
-				(p) => p.product.id == product.id
+				(p) => p.id == product.id
 			);
 
 			let newCart;
 
 			if (savedProductIndex === -1)
-				newCart = [...prevProducts, { product: product, quantity: 1 }];
+				newCart = [...prevProducts, { ...product, count: 1 }];
 			else {
 				newCart = [...prevProducts];
-				newCart[savedProductIndex].quantity++;
+				newCart[savedProductIndex].count++;
 			}
 
 			localStorage.setItem('cart', JSON.stringify(newCart));

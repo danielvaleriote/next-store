@@ -9,6 +9,7 @@ export const Title = styled.h1`
 	text-transform: uppercase;
 	font-weight: normal;
 	text-align: center;
+	font-size: 1.5rem;
 	padding: 20px;
 `;
 

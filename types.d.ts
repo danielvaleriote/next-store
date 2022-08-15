@@ -13,9 +13,8 @@ export interface Rating {
 	count: number;
 }
 
-export interface CartItem {
-	quantity: number;
-	product: Product;
+export interface CartItem extends Product {
+	count: number;
 }
 
 export type order = 'lowestPrice' | 'highestPrice' | 'rating';
