@@ -23,44 +23,31 @@ const ContextProvider = ({ children }: Props) => {
 	const updateLocalCart = () =>
 		localStorage.setItem('cart', JSON.stringify(cart));
 
-	const addProduct = (product: Product) => {
-		if (product) {
+	const actions = {
+		addProduct: (product: Product) => {
 			const products = [...cart];
-			let productIdx;
+			const productIdx = products.findIndex((p) => p.id === product.id);
 
-			const isInCart = products.some((p, idx) => {
-				if (p.id !== product.id) return false;
-
-				productIdx = idx;
-				return true;
-			});
-
-			if (!isInCart) setCart([...products, { ...product, count: 1 }]);
-			else {
-				if (productIdx || productIdx === 0) {
-					products[productIdx].count++;
-
-					setCart(products);
-				}
-			}
-		}
-	};
-
-	const removeProduct = (productId: number) => {
-		if (productId) {
-			let products = [...cart];
-
-			const productIdx = products.findIndex((p) => p.id === productId);
-			if (productIdx === -1) return;
-
-			products.splice(productIdx, 1);
+			if (productIdx === -1) products.push({ ...product, count: 1 });
+			else products[productIdx].count++;
 
 			setCart(products);
-		}
+		},
+
+		changeProductCount: (id: number, newCount: number) => {
+			const products = [...cart];
+			const productIdx = products.findIndex((p) => p.id === id);
+
+			if (productIdx === -1) return;
+			if (newCount === 0) products.splice(productIdx, 1);
+			else products[productIdx].count = newCount;
+
+			setCart(products);
+		},
 	};
 
 	return (
-		<Context.Provider value={{ cart, setCart, addProduct, removeProduct }}>
+		<Context.Provider value={{ cart, setCart, actions }}>
 			{children}
 		</Context.Provider>
 	);

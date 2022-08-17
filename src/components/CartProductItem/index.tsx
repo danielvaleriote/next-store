@@ -47,14 +47,30 @@ const CartProductItem = ({ cartItem }: { cartItem: CartItem }) => {
 					</PriceContainer>
 					<BtnsContainer>
 						<div>
-							<ChangeCountBtn>-</ChangeCountBtn>
+							<ChangeCountBtn
+								onClick={() =>
+									context.actions.changeProductCount(
+										cartItem.id,
+										cartItem.count == 1 ? 1 : cartItem.count - 1
+									)
+								}
+							>
+								-
+							</ChangeCountBtn>
 							{` ${cartItem.count} `}
-							<ChangeCountBtn onClick={() => context.addProduct(cartItem)}>
+							<ChangeCountBtn
+								onClick={() =>
+									context.actions.changeProductCount(
+										cartItem.id,
+										cartItem.count + 1
+									)
+								}
+							>
 								+
 							</ChangeCountBtn>
 						</div>
 						<RemoveProductBtn
-							onClick={() => context.removeProduct(cartItem.id)}
+							onClick={() => context.actions.changeProductCount(cartItem.id, 0)}
 						>
 							<FaTrash size={20} />
 						</RemoveProductBtn>

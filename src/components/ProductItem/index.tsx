@@ -56,7 +56,7 @@ const ProductItem = ({ product }: Props) => {
 					({rating.count})
 				</Rating>
 			</InfoContainer>
-			<AddToCartButton onClick={() => context.addProduct(product)}>
+			<AddToCartButton onClick={() => context.actions.addProduct(product)}>
 				Adicionar ao carrinho
 				<FaShoppingCart
 					size={14}

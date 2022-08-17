@@ -18,7 +18,6 @@ import { Product } from '../../../types';
 import { FaShoppingCart } from 'react-icons/fa';
 import Image from 'next/image';
 import cartContext from '../../context';
-import { addToCart } from '../../utils/products';
 
 const DetailedProduct = ({ product }: { product: Product }) => {
 	if (!product) return <div>Error</div>;
@@ -55,7 +54,7 @@ const DetailedProduct = ({ product }: { product: Product }) => {
 						({rating.count})
 					</Rating>
 				</PriceAndRating>
-				<AddToCartBtn onClick={() => context.addProduct(product)}>
+				<AddToCartBtn onClick={() => context.actions.addProduct(product)}>
 					Adicionar ao carrinho{' '}
 					<FaShoppingCart style={{ transform: 'translateY(2px)' }} />
 				</AddToCartBtn>
