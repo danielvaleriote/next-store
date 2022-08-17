@@ -55,7 +55,7 @@ const DetailedProduct = ({ product }: { product: Product }) => {
 						({rating.count})
 					</Rating>
 				</PriceAndRating>
-				<AddToCartBtn onClick={() => addToCart(product, context.setCart)}>
+				<AddToCartBtn onClick={() => context.addProduct(product)}>
 					Adicionar ao carrinho{' '}
 					<FaShoppingCart style={{ transform: 'translateY(2px)' }} />
 				</AddToCartBtn>

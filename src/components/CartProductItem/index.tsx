@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CartItem } from '../../../types';
-import cart from '../../pages/user/cart';
+import cartContext from '../../context';
 import {
 	StyledItem,
 	StyledImage,
@@ -16,6 +16,8 @@ import {
 import { FaTrash } from 'react-icons/fa';
 
 const CartProductItem = ({ cartItem }: { cartItem: CartItem }) => {
+	const context = useContext(cartContext);
+
 	return (
 		cartItem && (
 			<ProductContainer>
@@ -47,9 +49,13 @@ const CartProductItem = ({ cartItem }: { cartItem: CartItem }) => {
 						<div>
 							<ChangeCountBtn>-</ChangeCountBtn>
 							{` ${cartItem.count} `}
-							<ChangeCountBtn>+</ChangeCountBtn>
+							<ChangeCountBtn onClick={() => context.addProduct(cartItem)}>
+								+
+							</ChangeCountBtn>
 						</div>
-						<RemoveProductBtn>
+						<RemoveProductBtn
+							onClick={() => context.removeProduct(cartItem.id)}
+						>
 							<FaTrash size={20} />
 						</RemoveProductBtn>
 					</BtnsContainer>

@@ -1,7 +1,14 @@
 import { createContext } from 'react';
-import { CartItem } from '../../types';
+import { CartItem, Product } from '../../types';
 
 export default createContext<{
 	cart?: CartItem[];
 	setCart?: React.Dispatch<React.SetStateAction<CartItem[]>>;
-}>({ cart: undefined, setCart: undefined });
+	addProduct: (product: Product) => void;
+	removeProduct: (productId: number) => void;
+}>({
+	cart: undefined,
+	setCart: undefined,
+	addProduct: () => {},
+	removeProduct: () => {},
+});
