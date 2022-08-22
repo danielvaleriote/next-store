@@ -70,7 +70,14 @@ const CartProductItem = ({ cartItem }: { cartItem: CartItem }) => {
 							</ChangeCountBtn>
 						</div>
 						<RemoveProductBtn
-							onClick={() => context.actions.changeProductCount(cartItem.id, 0)}
+							onClick={() => {
+								context.setPopup(() => ({
+									active: true,
+									currPopupId: 'removeFromCart',
+								}));
+
+								context.actions.changeProductCount(cartItem.id, 0);
+							}}
 						>
 							<FaTrash size={20} />
 						</RemoveProductBtn>

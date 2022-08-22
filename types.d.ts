@@ -18,3 +18,8 @@ export interface CartItem extends Product {
 }
 
 export type order = 'lowestPrice' | 'highestPrice' | 'rating';
+
+export interface Popup {
+	active: boolean;
+	currPopupId: string;
+}

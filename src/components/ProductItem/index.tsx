@@ -56,7 +56,13 @@ const ProductItem = ({ product }: Props) => {
 					({rating.count})
 				</Rating>
 			</InfoContainer>
-			<AddToCartButton onClick={() => context.actions.addProduct(product)}>
+			<AddToCartButton
+				onClick={() => {
+					context.actions.addProduct(product);
+
+					context.setPopup({ active: true, currPopupId: 'addToCart' });
+				}}
+			>
 				Adicionar ao carrinho
 				<FaShoppingCart
 					size={14}

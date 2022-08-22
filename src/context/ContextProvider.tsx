@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Context from './';
-import { CartItem, Product } from '../../types';
+import { CartItem, Product, Popup } from '../../types';
 type Props = { children: React.ReactNode };
 
 const ContextProvider = ({ children }: Props) => {
 	const [cart, setCart] = useState<CartItem[]>([]);
+	const [popup, setPopup] = useState<Popup>({
+		active: false,
+		currPopupId: '',
+	});
 
 	useEffect(() => {
 		const localCart = localStorage.getItem('cart');
@@ -47,7 +51,7 @@ const ContextProvider = ({ children }: Props) => {
 	};
 
 	return (
-		<Context.Provider value={{ cart, setCart, actions }}>
+		<Context.Provider value={{ cart, setCart, actions, popup, setPopup }}>
 			{children}
 		</Context.Provider>
 	);
