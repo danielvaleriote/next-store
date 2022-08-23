@@ -23,7 +23,9 @@ const ProductPage: NextPage<{ product: Product }> = ({ product }) => {
 	return (
 		<>
 			<Head>
-				<title>{product?.title || 'Produto não encontrado'}</title>
+				<title>
+					{product?.title + ' | Next Store' || 'Produto não encontrado'}
+				</title>
 				{product && (
 					<meta
 						name="description"

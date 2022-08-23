@@ -3,13 +3,21 @@ import { fetchProducts } from '../../utils/products';
 import { Product } from '../../../types';
 import ProductsPage from '../../components/ProductsPage';
 import React from 'react';
+import Head from 'next/head';
 
 interface Props {
 	products: Product[];
 }
 
 const Jewelery: NextPage<Props> = ({ products }: Props) => {
-	return <ProductsPage products={products} />;
+	return (
+		<>
+			<Head>
+				<title>Joalheria | Next Store</title>
+			</Head>
+			<ProductsPage products={products}></ProductsPage>;
+		</>
+	);
 };
 
 export const getStaticProps: GetStaticProps = async () => {
