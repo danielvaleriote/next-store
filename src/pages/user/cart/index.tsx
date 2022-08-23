@@ -4,9 +4,11 @@ import Head from 'next/head';
 import cartContext from '../../../context';
 import { Title, Container, EmptyCartMsg } from './styled';
 import CartProductsList from '../../../components/CartProductsList';
+import Popup from '../../../components/Popup';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 const cart: NextPage = () => {
-	const { cart } = useContext(cartContext);
+	const { cart, popup } = useContext(cartContext);
 
 	return (
 		<>
@@ -21,6 +23,13 @@ const cart: NextPage = () => {
 					<EmptyCartMsg>O carrinho está vazio.</EmptyCartMsg>
 				) : (
 					<CartProductsList cart={cart || []} />
+				)}
+
+				{popup.active && popup.currPopupId === 'removeFromCart' && (
+					<Popup popupId="removeFromCart" variant="danger">
+						<AiFillCloseCircle size={25} />
+						Produto removido do carrinho.
+					</Popup>
 				)}
 			</Container>
 		</>

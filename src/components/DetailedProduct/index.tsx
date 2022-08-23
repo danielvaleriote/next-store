@@ -18,6 +18,7 @@ import { Product } from '../../../types';
 import { FaShoppingCart } from 'react-icons/fa';
 import Image from 'next/image';
 import cartContext from '../../context';
+import Popup from '../Popup';
 
 const DetailedProduct = ({ product }: { product: Product }) => {
 	if (!product) return <div>Error</div>;
@@ -54,7 +55,13 @@ const DetailedProduct = ({ product }: { product: Product }) => {
 						({rating.count})
 					</Rating>
 				</PriceAndRating>
-				<AddToCartBtn onClick={() => context.actions.addProduct(product)}>
+				<AddToCartBtn
+					onClick={() => {
+						context.actions.addProduct(product);
+
+						context.setPopup({ active: true, currPopupId: 'addToCart' });
+					}}
+				>
 					Adicionar ao carrinho{' '}
 					<FaShoppingCart style={{ transform: 'translateY(2px)' }} />
 				</AddToCartBtn>
@@ -63,6 +70,12 @@ const DetailedProduct = ({ product }: { product: Product }) => {
 					<Description>{description}</Description>
 				</DescriptionContainer>
 			</StyledProduct>
+			{context.popup.active && (
+				<Popup popupId={context.popup.currPopupId}>
+					Produto adicionado ao carrinho
+					<FaShoppingCart size={20} />
+				</Popup>
+			)}
 		</Container>
 	);
 };
